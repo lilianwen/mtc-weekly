@@ -1,0 +1,34 @@
+name: MTC Weekly Report
+
+on:
+  schedule:
+    # 每周一早上 9 点（北京时间），UTC 时间是周一凌晨 1 点
+    - cron: '0 1 * * 1'
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: pip install requests
+      
+      - name: Run report generator
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python main.py
+      
+      - name: Commit report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add report-*.md
+          git commit -m "Add weekly report" || echo "No changes to commit"
+          git push
