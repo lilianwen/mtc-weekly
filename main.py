@@ -17,7 +17,7 @@ REPOS = [
 DAYS = 7  # 监控最近多少天
 
 # OpenRouter 模型选择（推荐性价比高的）
-MODEL = "google/gemini-2.5-flash"  # 或 "anthropic/claude-3.5-haiku"
+MODEL = "deepseek/deepseek-v3.2"  # 或 "anthropic/claude-3.5-haiku"
 
 # ========== 工具函数 ==========
 def github_headers():
