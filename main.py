@@ -8,10 +8,7 @@ OPENROUTER_API_KEY = os.environ["OPENROUTER_API_KEY"]
 GITHUB_TOKEN = os.environ["MY_GITHUB_TOKEN"]  # 可选，不加也能用但有频率限制
 
 REPOS = [
-    "google/merkle-tree-certificate",
-    "cloudflare/merkle-tree-certificate",
-    "ietf-wg-acme/draft-ietf-acme-mtlscert",
-    "google/trillian",
+    "ietf-plants-wg/merkle-tree-certs",
 ]
 
 DAYS = 7  # 监控最近多少天
