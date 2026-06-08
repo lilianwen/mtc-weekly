@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MTC 技术动态周报</title>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
+        }
+        h1 { color: #222; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #444; margin-top: 30px; }
+        h3 { color: #555; }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.95em;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+    
+</head>
+<body>
+<h1>MTC 技术动态周报 (2026-06-01 ~ 2026-06-08)</h1>
+<h2>近期更新总结</h2>
+<p>本周，与 MTC 技术直接相关的核心仓库（google/merkle-tree-certificate、cloudflare/merkle-tree-certificate、ietf-wg-acme/draft-ietf-acme-mtlscert）均无更新。活跃度集中在 Google 的 <strong>Trillian</strong> 仓库，这是一个用于实现大规模透明日志（Merkle Tree）的后端服务，与 MTC 的底层数据结构密切相关。</p>
+<h3>仓库: google/trillian</h3>
+<p>本周的更新主要集中在 <strong>Claimant Model（声明者模型）</strong> 的文档改进与依赖项维护。</p>
+<p><strong>技术上有意义的变动归纳：</strong></p>
+<ol>
+<li><strong>Claimant Model 文档重构与外部引用记录</strong>：这是本周最具实质性的更新。开发者对描述“声明者模型”的文档进行了重写（PR #3877），旨在使其更易于阅读和理解。随后，又补充记录了该模型已知的外部使用案例和参考文献（PR #3895）。这表明 Trillian 团队正在系统性地梳理和澄清其核心组件（Claimant Model）的设计与生态，这可能为外部集成（例如 MTC 系统）提供更清晰的接口和概念指引。</li>
+</ol>
+<p><strong>整体方向：</strong>
+本周 Trillian 的更新呈现出 <strong>“维护与澄清”</strong> 的特点。大部分 commit 和 PR 属于依赖项版本升级（Bump）和 CI 配置修复，这是常规的仓库维护工作。唯一突出的技术活动是围绕 <strong>Claimant Model</strong> 的文档质量提升，这有助于降低该复杂系统的理解门槛，可能间接促进基于 Trillian 的 MTC 或其他透明日志应用的开发。</p>
+<h2>重点关注清单</h2>
+<p>基于本周的更新，对于关注 MTC 及相关技术的读者，建议关注以下几点：</p>
+<ol>
+<li><strong>Trillian 的 Claimant Model 文档更新</strong>：重新编写的文档可能包含了对该模型职责、接口和设计哲学的更清晰阐述，是理解 Trillian 如何作为 MTC 或其他透明系统基石的关键材料。</li>
+<li><strong>外部项目对 Trillian Claimant Model 的引用</strong>：新文档中记录的“已知外部使用/引用”值得关注，这可能揭示了 Trillian（及其声明者模型）在真实世界项目（可能包括 MTC 相关项目）中的实际集成模式。</li>
+<li><strong>核心 MTC 仓库的沉寂状态</strong>：google 和 cloudflare 的 MTC 主仓库以及 IETF 草案本周无更新。这可能意味着协议实现处于稳定期，或主要开发活动转移到了其他相关子项目（如 Trillian）。</li>
+<li><strong>Trillian 的依赖安全状态</strong>：尽管是常规维护，但频繁的依赖项更新（尤其是 go-deps 和 docker-deps）反映了团队对保持基础组件安全性与兼容性的重视，这对于构建安全的 MTC 基础设施至关重要。</li>
+</ol>
+</body>
+</html>
