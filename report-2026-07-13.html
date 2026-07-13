@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MTC 技术动态周报</title>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
+        }
+        h1 { color: #222; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #444; margin-top: 30px; }
+        h3 { color: #555; }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.95em;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+    
+</head>
+<body>
+<h1>MTC 技术动态周报 (2026-07-06 ~ 2026-07-13)</h1>
+<h2>仓库更新总结</h2>
+<h3>google/trillian</h3>
+<p>本周只有一个依赖项更新提交，将 <code>golang.org/x/crypto</code> 从 0.51.0 升级到 0.52.0。这是一个常规的安全库版本跟进，属于维护性更新。</p>
+<p>在开放的 Pull Requests 中，值得关注的是 <strong>#3845</strong>：提议将监控指标服务迁移到专用的多路复用器（mux）上。这个改动虽然不直接涉及 MTC 核心逻辑，但属于<strong>架构优化</strong>，旨在提升服务的可观测性和稳定性，将业务流量与监控指标流量分离，是生产级系统常见的优化方向。</p>
+<h2>重点关注清单</h2>
+<ol>
+<li><strong>架构解耦</strong>：Trillian 正在考虑将监控端点与主服务分离（PR #3845），这预示着其对生产部署可靠性和可维护性的重视。</li>
+<li><strong>安全依赖维护</strong>：项目持续跟进核心安全库（如 <code>golang.org/x/crypto</code>）的版本更新，保持底层依赖的安全性。</li>
+<li><strong>活跃度观察</strong>：核心的 MTC 相关仓库（google/merkle-tree-certificate, cloudflare/merkle-tree-certificate）及 IETF 草案仓库本周均无代码更新，表明近期开发焦点可能不在协议实现本身，而在生态工具（如 Trillian）的优化上。</li>
+</ol>
+</body>
+</html>
