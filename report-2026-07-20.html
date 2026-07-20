@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MTC 技术动态周报</title>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
+        }
+        h1 { color: #222; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #444; margin-top: 30px; }
+        h3 { color: #555; }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.95em;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+    
+</head>
+<body>
+<h1>MTC 技术动态周报 (2026-07-13 ~ 2026-07-20)</h1>
+<h2>近期更新总结</h2>
+<p>本周，与 MTC 直接相关的核心仓库（google/merkle-tree-certificate, cloudflare/merkle-tree-certificate, ietf-wg-acme/draft-ietf-acme-mtlscert）均无代码或草案更新，处于静默期。</p>
+<p>唯一有活动的是 <strong>Google/Trillian</strong> 仓库。Trillian 是一个实现透明日志（Transparent Log）的通用服务，是 MTC 等证书透明度（CT）方案的后端基础。其本周更新主要为维护性质，技术实质性变动有限。</p>
+<p><strong>Google/Trillian 仓库更新归纳：</strong></p>
+<p>本周的 1 个 commit 和 4 个 PR 主要围绕 <strong>依赖项更新和代码现代化</strong> 展开：
+*   <strong>依赖项维护</strong>：多个 PR（#3860, #3898）由 Dependabot 自动创建，旨在批量更新 Go 语言和 Docker 相关的第三方依赖库版本。这是常规的安全性和兼容性维护。
+*   <strong>代码现代化</strong>：PR #3896 提议将代码中的 <code>interface{}</code> 替换为 Go 1.18 引入的 <code>any</code> 类型别名。这属于代码风格统一和现代化改造，不涉及功能或协议逻辑变更。
+*   <strong>安全工具调优</strong>：PR #3903 旨在处理静态安全扫描工具（govulncheck）产生的“不可操作”警报，属于开发流程优化。</p>
+<p>唯一打开的 <strong>Issue #3904</strong> 是一个运维问题，用户询问如何禁用 Trillian 服务默认暴露的 <code>/metrics</code> 和 <code>/debug/vars</code> 监控端点，这关系到生产环境的部署安全配置。</p>
+<hr />
+<h3>重点关注清单</h3>
+<p>基于本周的更新情况，建议关注以下方面：</p>
+<ol>
+<li><strong>核心协议静默期</strong>：主要 MTC 实现仓库和 IETF 标准草案本周无更新，可能意味着开发团队正专注于内部测试、评审，或等待外部反馈。下一轮实质性协议或代码更新值得期待。</li>
+<li><strong>基础设施维护状态</strong>：Trillian 作为底层透明日志服务的活跃维护（依赖更新、代码现代化）表明其生态在持续运行，为上层 MTC 等应用提供稳定基础。</li>
+<li><strong>生产部署考量</strong>：Trillian 仓库中关于禁用监控端点的 issue 提醒我们，在将透明日志或 MTC 相关组件投入生产环境时，需要仔细评估其默认的运维接口暴露情况，并做好安全加固。</li>
+<li><strong>标准推进节奏</strong>：IETF 草案 <code>draft-ietf-acme-mtlscert</code> 无更新，需关注其下一次修订版本发布，这将是了解 MTC 与 ACME 协议集成进展和可能变更的关键节点。</li>
+</ol>
+</body>
+</html>
