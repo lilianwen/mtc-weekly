@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MTC 技术动态周报</title>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
+        }
+        h1 { color: #222; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #444; margin-top: 30px; }
+        h3 { color: #555; }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.95em;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+    
+</head>
+<body>
+<h1>MTC 技术动态周报 (2026-07-27 ~ 2026-08-03)</h1>
+<h2>各仓库近期更新总结</h2>
+<h3>google/trillian</h3>
+<p>该仓库是Google Trillian（一个提供透明日志服务的可验证数据结构库）的主仓库。过去一周的更新主要集中在<strong>依赖项维护</strong>上。</p>
+<p><strong>技术上有意义的变动：</strong>
+1.  <strong>依赖项安全与版本更新</strong>：本周的5个Pull Request全部由Dependabot发起，旨在更新Go语言依赖、GitHub Actions工作流依赖以及Docker相关依赖的版本。这些更新通常包含了上游库的安全补丁和错误修复，对于维护Trillian服务的安全性和稳定性至关重要。例如，PR #3907将核心依赖<code>etcd</code>从v3.6.12升级到了v3.6.14。</p>
+<ol>
+<li><strong>运维与可观测性调整</strong>：Issue #3904（“如何禁用 /metrics 和 /debug/vars”）已被关闭。这表明有用户关注在生产环境中减少暴露内部指标和调试端点，可能出于安全或性能考虑。该问题的关闭意味着解决方案已在文档中或通过配置实现，反映了项目对实际部署需求的响应。</li>
+</ol>
+<p><strong>整体方向归纳：</strong>
+过去一周，<code>google/trillian</code>仓库的活动呈现出典型的<strong>维护期特征</strong>，焦点是保持项目基础架构（依赖链、构建工具）的现代化与安全性，而非推出新功能或进行协议层面的重大修改。同时，对用户运维问题的处理显示了项目对生产环境友好性的持续关注。</p>
+<h3>其他相关仓库</h3>
+<p><code>google/merkle-tree-certificate</code>、<code>cloudflare/merkle-tree-certificate</code> 以及 IETF 的 <code>draft-ietf-acme-mtlscert</code> 草案仓库在过去一周均无公开更新。这可能表明这些项目处于开发间歇期，或主要工作正在非公开渠道（如内部开发、邮件列表讨论）进行。</p>
+<h2>重点关注清单</h2>
+<ol>
+<li><strong>Trillian 依赖安全</strong>：多个由Dependabot发起的依赖更新PR（特别是涉及<code>etcd</code>的升级）值得关注，它们直接关系到Trillian透明日志服务底层的数据一致性与安全性。</li>
+<li><strong>生产环境配置</strong>：关于禁用<code>/metrics</code>等端点的Issue表明，在将透明日志技术投入生产时，<strong>安全加固和最小化攻击面</strong>是实际运维中会被重点考虑的问题。</li>
+<li><strong>核心协议草案的静默期</strong>：关键的标准草案仓库（如IETF ACME MTLSCert）无更新，可能意味着协议设计正处于讨论、修订或等待其他工作推进的阶段，值得后续关注其突破性进展。</li>
+<li><strong>项目活跃度差异</strong>：当前可见的更新集中在底层服务库（Trillian），而直接面向MTC证书格式或客户端实现的仓库相对静止，这提示生态系统的开发重心可能仍在<strong>基础设施层</strong>。</li>
+</ol>
+</body>
+</html>
