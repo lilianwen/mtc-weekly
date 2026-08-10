@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MTC 技术动态周报</title>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
+        }
+        h1 { color: #222; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #444; margin-top: 30px; }
+        h3 { color: #555; }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.95em;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+    
+</head>
+<body>
+<h1>MTC 技术动态周报 (2026-08-03 ~ 2026-08-10)</h1>
+<h2>各仓库近期更新总结</h2>
+<h3>google/trillian</h3>
+<p>本周该仓库（Google 维护的透明日志服务器实现，是 MTC 等技术的基础设施）有少量更新，主要围绕依赖项管理和代码简化。</p>
+<p><strong>技术上有意义的变动：</strong>
+1. <strong>提议移除追踪支持</strong>（PR #3912）：一个开放的 PR 提议移除代码中的追踪（tracing）支持，这将连带移除对 AWS SDK 和 Prometheus 客户端的依赖。此举旨在简化代码库、减少依赖项和潜在的攻击面，但可能会影响现有的监控和调试能力。
+2. <strong>安全依赖项更新</strong>：通过多个 PR（#3906, #3907, #3909）完成了对核心依赖项的版本升级，包括 <code>grpc</code> 和 <code>etcd</code>。这些更新通常包含错误修复和安全补丁，对于维护 Trillian 作为关键基础设施组件的稳定性和安全性至关重要。
+3. <strong>遗留依赖项的安全警告</strong>（Issue #3911）：一个开放的问题指出，旧的 <code>opencensus</code> 依赖项引入了安全警告。这与 PR #3912 的动机相呼应，共同反映了项目正在进行的 <strong>“依赖项精简与安全加固”</strong> 的整体方向。</p>
+<p><strong>整体方向归纳：</strong>
+本周 Trillian 的活动集中于 <strong>维护性工作</strong>，重点是升级依赖项以获取安全修复，并讨论通过移除特性（如 tracing）来简化架构、减少长期维护负担和安全风险。没有涉及 MTC 协议本身或核心日志功能的重大变更。</p>
+<h3>其他仓库</h3>
+<p><code>google/merkle-tree-certificate</code>、<code>cloudflare/merkle-tree-certificate</code> 和 <code>ietf-wg-acme/draft-ietf-acme-mtlscert</code> 在过去一周均无公开更新。</p>
+<hr />
+<h2>重点关注清单</h2>
+<ol>
+<li><strong>Trillian 的依赖项精简趋势</strong>：关注 PR #3912（移除 tracing）的进展，这反映了项目在安全性与功能复杂性之间的权衡，可能影响未来部署和集成方式。</li>
+<li><strong>核心基础设施的安全性维护</strong>：Trillian 对 <code>grpc</code>、<code>etcd</code> 等关键依赖的持续更新，是保障整个 MTC/透明日志技术栈底层安全的基础。</li>
+<li><strong>遗留依赖项的技术债</strong>：Issue #3911 中关于 <code>opencensus</code> 的安全警告，连同依赖项更新讨论，表明项目正在积极处理技术债以提升安全性。</li>
+<li><strong>协议规范与实现的静默期</strong>：主要 MTC 实现仓库及 IETF 草案仓库本周无更新，可能意味着当前处于开发间歇期或重点转向底层依赖维护。</li>
+</ol>
+</body>
+</html>
