@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MTC 技术动态周报</title>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
+        }
+        h1 { color: #222; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #444; margin-top: 30px; }
+        h3 { color: #555; }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.95em;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+    
+</head>
+<body>
+<h1>MTC 技术动态周报 (2026-08-10 ~ 2026-08-17)</h1>
+<h2>各仓库近期更新总结</h2>
+<h3>google/trillian</h3>
+<p>本周该仓库是唯一有活跃更新的项目，主要围绕一个潜在的安全/稳定性漏洞进行修复。</p>
+<p><strong>核心更新：</strong>
+- <strong>安全漏洞修复</strong>：发现并修复了在 <code>PREORDERED_LOG</code> 类型树中，<code>GetLeavesByRange</code> RPC 方法的 <code>Count</code> 参数未做边界检查的问题。攻击者可能通过传入一个极大的 <code>Count</code> 值导致服务崩溃，构成拒绝服务（DoS）风险。相关 Issue (#3914) 和 PR (#3915) 均指向此问题，表明团队正在积极处理这一安全隐患。</p>
+<p><strong>其他变动：</strong>
+- 一项提议将依赖项从 <code>bitbucket.org/creachadair/shell</code> 迁移至 GitHub 上的 <code>creachadair/mds</code> (#3916)。这属于依赖库的维护性更新，对核心协议或功能无直接影响。</p>
+<h3>其他仓库</h3>
+<p><code>google/merkle-tree-certificate</code>、<code>cloudflare/merkle-tree-certificate</code> 以及 IETF 相关工作组的草案仓库 <code>ietf-wg-acme/draft-ietf-acme-mtlscert</code> 在过去一周均无公开提交或合并。</p>
+<h2>重点关注清单</h2>
+<ol>
+<li><strong>Trillian 中的潜在 DoS 风险</strong>：关注 <code>PREORDERED_LOG</code> 树类型的 <code>GetLeavesByRange</code> 接口修复进展，这关系到日志服务的稳定性与抗攻击能力。</li>
+<li><strong>MTC 核心实现库的静默期</strong>：Google 和 Cloudflare 的核心 MTC 实现仓库近期无变更，可能意味着实现已趋于稳定，或主要开发活动转移至其他分支或内部仓库。</li>
+<li><strong>IETF 标准草案的推进状态</strong>：ACME 扩展草案仓库无更新，建议关注 IETF 会议或邮件列表以获取标准制定进程的最新动态。</li>
+</ol>
+</body>
+</html>
