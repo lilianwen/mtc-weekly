@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MTC 技术动态周报</title>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
+        }
+        h1 { color: #222; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #444; margin-top: 30px; }
+        h3 { color: #555; }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.95em;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+    
+</head>
+<body>
+<h1>MTC 技术动态周报 (2026-08-17 ~ 2026-08-24)</h1>
+<h2>各仓库近期更新总结</h2>
+<h3>google/trillian</h3>
+<p>本周该仓库是唯一有实质性代码更新的项目，主要围绕 <strong>MySQL 配额提供程序（quota provider）的性能优化</strong> 展开。</p>
+<p><strong>核心技术更新：</strong>
+- <strong>提交 [416e64c]</strong>: 为 MySQL 配额提供程序引入了批处理（batching）功能。这是本周唯一一个非依赖项更新的代码提交。其技术意义在于，通过将多个配额检查或更新操作批量执行，有望减少与数据库的交互次数，从而在高并发场景下提升系统的整体吞吐量和性能，降低延迟。</p>
+<p><strong>其他动态：</strong>
+- 多个由 <code>dependabot</code> 发起的依赖项更新 PR（涉及 Go 模块、GitHub Actions 和 Docker 镜像），属于常规的依赖维护。
+- 一个新增的 <strong>Issue #420</strong>，提出了“语句缓存（Statement cache）应能感知错误”。这是一个与<strong>数据库连接/查询可靠性</strong>相关的潜在改进点，旨在增强系统在面对数据库临时错误时的健壮性，防止因缓存了无效或错误的预处理语句而导致后续请求失败。</p>
+<p><strong>整体方向：</strong>
+本周的更新焦点明确指向 <strong>后端存储（数据库）层的性能与可靠性优化</strong>。批处理提交直接提升了配额管理的效率，而新提出的 issue 则关注于数据库访问组件的错误处理能力，两者共同目标是确保 Trillian 作为大规模证书透明（CT）日志后端服务的稳定与高效运行。</p>
+<h3>其他仓库</h3>
+<ul>
+<li><code>google/merkle-tree-certificate</code>、<code>cloudflare/merkle-tree-certificate</code> 以及 IETF 工作组下的 <code>draft-ietf-acme-mtlscert</code> 草案仓库，在过去一周内均无任何代码、PR 或 Issue 更新。</li>
+</ul>
+<hr />
+<h2>重点关注清单 (近期技术动向)</h2>
+<ol>
+<li><strong>数据库性能优化</strong>：Trillian 开始为 MySQL 配额管理引入批处理机制，这是应对高负载、提升可扩展性的具体技术举措。</li>
+<li><strong>系统可靠性议题</strong>：新出现的关于“语句缓存错误感知”的讨论，指向了底层数据库交互组件的容错性设计，是保障服务持续可用的重要方面。</li>
+<li><strong>核心协议与实现静默期</strong>：与 MTC 直接相关的核心仓库（Google/Cloudflare 的实现及 IETF 标准草案）近期无更新，表明当前可能处于标准推进的实现消化期或稳定阶段，暂无重大协议变更。</li>
+</ol>
+</body>
+</html>
