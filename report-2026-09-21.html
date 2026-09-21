@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MTC 技术动态周报</title>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
+        }
+        h1 { color: #222; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #444; margin-top: 30px; }
+        h3 { color: #555; }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.95em;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+    
+</head>
+<body>
+<h1>MTC 技术动态周报 (2026-09-14 ~ 2026-09-21)</h1>
+<h2>近期更新总结</h2>
+<h3>仓库更新分析</h3>
+<p><strong>google/trillian</strong>
+本周有两个主要技术变动，整体方向是<strong>简化依赖、移除非核心功能</strong>：
+1. <strong>移除追踪支持</strong> (#3912)：删除了对 OpenTelemetry 追踪、AWS SDK 和 Prometheus 的依赖。这是一个<strong>架构简化</strong>的重要变更，旨在减少代码复杂性和维护负担，表明项目在聚焦核心的透明日志（Merkle Tree）功能。
+2. <strong>依赖项大版本升级</strong> (多个 PR)：批量升级了 Go 语言版本（至 1.26）和众多依赖（如 OpenTelemetry 相关组件），并重新生成了 Protobuf 文件。这属于<strong>常规的技术栈现代化</strong>工作，旨在保持项目与生态系统的同步和安全更新。</p>
+<p>其他仓库（google/merkle-tree-certificate, cloudflare/merkle-tree-certificate, ietf-wg-acme/draft-ietf-acme-mtlscert）本周均无更新。</p>
+<h3>重点关注清单</h3>
+<ol>
+<li><strong>Trillian 架构简化</strong>：移除追踪支持可能意味着项目在明确边界，将日志存储（Trillian）与可观测性解耦，值得关注其后续设计方向。</li>
+<li><strong>依赖现代化</strong>：Trillian 的大规模依赖升级（特别是 Go 1.26）可能带来性能改进或新语言特性的利用，但需注意升级后的稳定性。</li>
+<li><strong>协议草案静默期</strong>：IETF ACME MTLSCert 草案仓库无更新，可能意味着标准制定处于讨论或稳定阶段，可关注其后续是否会整合各方的 MTC 实现经验。</li>
+</ol>
+</body>
+</html>
