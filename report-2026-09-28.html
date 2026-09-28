@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MTC 技术动态周报</title>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
+        }
+        h1 { color: #222; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #444; margin-top: 30px; }
+        h3 { color: #555; }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.95em;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+    
+</head>
+<body>
+<h1>MTC 技术动态周报 (2026-09-21 ~ 2026-09-28)</h1>
+<h2>近期更新总结</h2>
+<h3>google/trillian 仓库更新分析</h3>
+<p>Trillian 是 Google 实现透明日志（Transparent Log）的核心服务，为 MTC 等证书透明度方案提供底层数据存储和验证支持。本周的更新主要围绕 <strong>v1.8.0 版本的发布准备</strong> 和 <strong>依赖项与基础设施的现代化升级</strong>。</p>
+<p><strong>主要技术变动方向：</strong></p>
+<ol>
+<li>
+<p><strong>版本发布与依赖项大规模升级</strong>：为 v1.8.0 版本发布更新了 CHANGELOG。更重要的是，一个大型合并（#3931）一次性完成了多项底层升级：</p>
+<ul>
+<li><strong>语言与工具链</strong>：将 Go 语言版本升级至 1.26，并更新了 <code>golangci-lint</code> 版本，这通常意味着利用了新语言特性和更严格的代码质量检查。</li>
+<li><strong>依赖库更新</strong>：批量更新了 20 个 Go 依赖项，有助于修复潜在的安全漏洞、引入新功能并保持生态兼容性。</li>
+<li><strong>协议与测试环境</strong>：重新生成了 Protobuf 文件，确保了 gRPC 接口定义的一致性。在测试中，从 <code>etcd</code> 客户端迁移至 <code>etcd/server</code> 包，这可能提升了测试环境的真实性和可靠性。</li>
+</ul>
+</li>
+<li>
+<p><strong>安全性与稳定性增强</strong>：</p>
+<ul>
+<li>关闭了 PR #3903，其内容为“静默不可操作的安全漏洞检查发现”。这表明团队在持续进行安全审计（使用 <code>govulncheck</code> 等工具），并审慎地处理误报或无需立即修复的发现，以保持构建的清洁和关注重点。</li>
+<li>在 #3931 中提到了“更严格的主选举租约过滤”，这优化了 Trillian 多个副本实例中领导者选举的机制，可能提升了集群在高负载下的稳定性和响应能力。</li>
+</ul>
+</li>
+</ol>
+<p><strong>整体评估</strong>：本周 Trillian 的更新并非针对 MTC 协议本身的功能性修改，而是典型的 <strong>维护性发布周期工作</strong>。重点在于夯实基础：升级核心依赖、改进开发工具链、优化内部协调机制。这些改动为后续构建更稳定、安全的透明日志服务打下了基础，间接支持了上层 MTC 等应用。</p>
+<hr />
+<h3>其他相关仓库</h3>
+<ul>
+<li><strong>google/merkle-tree-certificate</strong>、<strong>cloudflare/merkle-tree-certificate</strong>、<strong>ietf-wg-acme/draft-ietf-acme-mtlscert</strong>：在过去一周内均无代码或草案文本的更新。这表明 MTC 的<strong>核心协议实现和规范制定</strong>目前处于稳定或非活跃开发阶段。</li>
+</ul>
+<hr />
+<h2>重点关注清单</h2>
+<ol>
+<li><strong>Trillian 进入维护与夯实阶段</strong>：v1.8.0 的发布标志着一次重要的基础设施升级（Go 1.26, 依赖项大更新），这为所有基于 Trillian 的透明日志应用（包括 MTC）提供了更现代、更安全的基础运行时环境。</li>
+<li><strong>安全工具集成常态化</strong>：团队持续集成 <code>govulncheck</code> 等自动化安全扫描工具并管理其输出，表明安全开发流程（Security DevOps）已被纳入日常开发周期。</li>
+<li><strong>集群稳定性优化</strong>：“更严格的主选举租约过滤”的改进，虽属底层细节，但对确保 Trillian 日志服务的高可用性和一致性至关重要，是支撑大规模、高可信度证书透明日志服务的基石。</li>
+<li><strong>MTC 协议层暂无新动向</strong>：主要厂商（Google, Cloudflare）的 MTC 实现仓库及 IETF 草案近期无更新，可能意味着协议设计已趋于稳定，当前工作重心在于底层服务（如 Trillian）的完善和生态构建。</li>
+<li><strong>测试与开发环境现代化</strong>：迁移至 <code>etcd/server</code> 进行测试，体现了对测试真实性的追求，有助于提前发现生产环境可能遇到的问题。</li>
+</ol>
+</body>
+</html>
