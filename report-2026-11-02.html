@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MTC 技术动态周报</title>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
+        }
+        h1 { color: #222; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #444; margin-top: 30px; }
+        h3 { color: #555; }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.95em;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+    
+</head>
+<body>
+<h1>MTC 技术动态周报 (2026-10-26 ~ 2026-11-02)</h1>
+<h2>总体判断</h2>
+<p>近 7 天内，MTC 相关的核心仓库和 IETF 草案仓库均无实质更新；唯一有活动的是 <code>google/trillian</code>，但其变化全部来自 Dependabot 的依赖升级，不涉及协议设计、安全模型或性能逻辑。</p>
+<p>从 MTC 技术演进角度看，本周可以概括为：<strong>核心实现与标准化文本处于静默期，周边基础设施仅做维护性依赖刷新。</strong></p>
+<hr />
+<h2>按仓库总结</h2>
+<h3>1. <code>google/merkle-tree-certificate</code></h3>
+<p>本周无更新。</p>
+<p>这意味着 Google 侧 MTC 实现仓库没有新的代码提交、协议调整、验证逻辑变化或性能优化。对 MTC 技术跟踪来说，本周没有来自 Google 实现层的新信号。</p>
+<hr />
+<h3>2. <code>cloudflare/merkle-tree-certificate</code></h3>
+<p>本周无更新。</p>
+<p>Cloudflare 侧 MTC 仓库同样保持静默，没有出现新的实现、测试、接口或证书结构相关变动。对于关注 Google 与 Cloudflare 两方 MTC 路线协同或差异的读者来说，本周没有新的变化可分析。</p>
+<hr />
+<h3>3. <code>ietf-wg-acme/draft-ietf-acme-mtlscert</code></h3>
+<p>本周无更新。</p>
+<p>ACME 相关的 MTC/MTLS 证书草案仓库没有文本修订、issue 讨论或 PR 合并。这通常表示该草案在本周没有进入新的编辑、讨论或版本迭代阶段。</p>
+<p>从标准化角度看，MTC 与 ACME 的集成路径本周没有公开文本层面的推进。</p>
+<hr />
+<h3>4. <code>google/trillian</code></h3>
+<p>本周有 5 个 PR，但全部为 Dependabot 发起的依赖升级，包括 GitHub Actions、Go 依赖、Docker 依赖等。</p>
+<p>这些更新整体属于维护性变更，而非功能或协议变更。对 MTC 关注者来说，它们的技术意义有限：</p>
+<ul>
+<li><strong>GitHub Actions / Docker 依赖升级</strong>：主要是 CI 和构建环境维护，可视为噪音。</li>
+<li><strong>Go 依赖升级</strong>：可能包含安全修复或库版本刷新，但没有人工提交的功能、API、证明逻辑或性能改动，因此不能视为 MTC 相关技术进展。</li>
+<li><strong>没有涉及透明日志协议、Merkle 证明生成/验证、证书签发流程、存储结构或性能优化的变更</strong>。</li>
+</ul>
+<p>因此，<code>google/trillian</code> 本周的状态可以归纳为：<strong>项目保持依赖新鲜度，但未见与 MTC 直接相关的实质演进。</strong></p>
+<hr />
+<h2>重点关注清单</h2>
+<ol>
+<li>
+<p><strong>MTC 核心实现本周静默</strong><br />
+<code>google/merkle-tree-certificate</code> 和 <code>cloudflare/merkle-tree-certificate</code> 均无更新，说明 Google 与 Cloudflare 的 MTC 实现层面本周没有新的技术信号。</p>
+</li>
+<li>
+<p><strong>ACME 草案没有文本推进</strong><br />
+<code>draft-ietf-acme-mtlscert</code> 无更新，意味着 MTC 与 ACME 证书签发流程的标准化讨论本周没有形成公开修订。</p>
+</li>
+<li>
+<p><strong>Trillian 仅有依赖维护，无协议或性能变化</strong><br />
+<code>google/trillian</code> 的 PR 全部是 Dependabot 依赖升级，不涉及 Merkle Tree、证书证明、日志一致性或 MTC 集成逻辑。</p>
+</li>
+<li>
+<p><strong>后续应关注是否出现“实质技术 PR”</strong><br />
+   对 MTC 而言，真正值得跟踪的是涉及证书结构、签发流程、证明验证、日志性能、API 兼容性或安全模型的变更，而不是 CI/依赖刷新。</p>
+</li>
+<li>
+<p><strong>依赖升级可作为项目健康度信号，但不能视为 MTC 进展</strong><br />
+   Trillian 的持续依赖更新说明维护仍在进行，但从 MTC 技术演进角度，它只反映基础设施维护，不反映协议或实现方向的变化。</p>
+</li>
+</ol>
+</body>
+</html>
