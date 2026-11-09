@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MTC 技术动态周报</title>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
+        }
+        h1 { color: #222; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #444; margin-top: 30px; }
+        h3 { color: #555; }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.95em;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        a { color: #0969da; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+    
+</head>
+<body>
+<h1>MTC 技术动态周报 (2026-11-02 ~ 2026-11-09)</h1>
+<h2>各仓库近期更新总结</h2>
+<h3>仓库: google/trillian</h3>
+<p><strong>更新概述：</strong>
+本周的更新主要集中在<strong>依赖项维护、安全漏洞修复和代码质量提升</strong>，而非核心的 MTC 协议或功能开发。</p>
+<ul>
+<li>
+<p><strong>安全漏洞修复 (Security Vulnerability Fixes):</strong></p>
+<ul>
+<li>核心变动是 PR #3943 (<code>fix: [vulns] bump go toolchain and go/x/net</code>)，该提交主动升级了 Go 工具链以及 <code>golang.org/x/net</code> 依赖，以解决潜在的安全漏洞。这体现了项目对供应链安全的持续关注。</li>
+<li>相关的 Issue #3911 (<code>Old opencensus dependency brings in security warnings</code>) 已关闭，表明由旧版 <code>opencensus</code> 依赖引入的安全警告问题已得到处理。</li>
+</ul>
+</li>
+<li>
+<p><strong>依赖项批量更新 (Dependency Updates):</strong></p>
+<ul>
+<li>本周有多个由 Dependabot 发起的批量依赖更新 PR（#3941, #3942, #3944），涵盖了 Go 语言依赖、GitHub Actions 工作流依赖等。这些更新旨在保持项目依赖处于较新且安全的状态。</li>
+</ul>
+</li>
+<li>
+<p><strong>代码质量与工具链 (Code Quality &amp; Tooling):</strong></p>
+<ul>
+<li>一个值得注意的长期 PR #2979 (<code>Enable all lint checks in trillian repo</code>) 被关闭。此 PR 旨在为整个代码库启用所有 lint 检查，虽然本周关闭，但表明项目在持续推动代码规范化和静态分析，以提升整体代码质量与可维护性。</li>
+</ul>
+</li>
+</ul>
+<h3>其他仓库</h3>
+<ul>
+<li><strong>google/merkle-tree-certificate</strong>, <strong>cloudflare/merkle-tree-certificate</strong>, <strong>ietf-wg-acme/draft-ietf-acme-mtlscert</strong> 在过去一周内均无代码或文档更新。</li>
+</ul>
+<hr />
+<h2>重点关注清单</h2>
+<ol>
+<li><strong>安全维护优先</strong>: Trillian 项目本周的核心活动是修复安全漏洞（升级 Go 工具链及 <code>x/net</code>）和批量更新依赖，这反映了在基础设施层面对供应链安全的持续投入。</li>
+<li><strong>依赖管理自动化</strong>: 多个依赖更新由 Dependabot 自动发起并合并，显示了项目在依赖管理上高度自动化的成熟工作流。</li>
+<li><strong>代码质量持续优化</strong>: 虽然本周没有新功能，但启用所有 lint 检查的长期 PR 的完结，表明项目在功能开发之外，也在系统性地提升代码健壮性和可维护性。</li>
+<li><strong>核心协议开发静默期</strong>: 与 MTC 直接相关的核心仓库（Google/Cloudflare 的实现及 IETF 草案）本周无更新，可能意味着当前开发重点在于底层依赖和工具的稳固，或处于特性开发的间歇期。</li>
+</ol>
+</body>
+</html>
